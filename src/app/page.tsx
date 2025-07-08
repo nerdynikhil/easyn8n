@@ -28,12 +28,14 @@ export default function HomePage() {
             </Link>
           </nav>
           <div className="flex items-center space-x-4">
-            <Button variant="ghost" size="sm">
-              Sign In
+            <Button variant="ghost" size="sm" asChild>
+              <Link href="/api/auth/signin">Sign In</Link>
             </Button>
-            <Button size="sm">
-              Get Started
-              <ArrowRight className="ml-2 h-4 w-4" />
+            <Button size="sm" asChild>
+              <Link href="/generator">
+                Get Started
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
             </Button>
           </div>
         </div>
@@ -56,12 +58,16 @@ export default function HomePage() {
                 Describe your automation needs in plain English. Our AI generates professional n8n workflows ready for download or direct import. No technical expertise required.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mt-8">
-                <Button size="lg" className="text-lg px-8 py-6">
-                  Create Your First Workflow
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                <Button size="lg" className="text-lg px-8 py-6" asChild>
+                  <Link href="/generator">
+                    Create Your First Workflow
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
                 </Button>
-                <Button variant="outline" size="lg" className="text-lg px-8 py-6">
-                  View Templates
+                <Button variant="outline" size="lg" className="text-lg px-8 py-6" asChild>
+                  <Link href="/templates">
+                    View Templates
+                  </Link>
                 </Button>
               </div>
               <p className="text-sm text-gray-500 mt-4">
@@ -199,8 +205,8 @@ export default function HomePage() {
                   <CardDescription>Perfect for trying out EasyN8N</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <Button className="w-full mb-6" variant="outline">
-                    Get Started Free
+                  <Button className="w-full mb-6" variant="outline" asChild>
+                    <Link href="/generator">Get Started Free</Link>
                   </Button>
                   <ul className="space-y-3">
                     <li className="flex items-center">
@@ -228,8 +234,8 @@ export default function HomePage() {
                   <CardDescription>For individuals and small teams</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <Button className="w-full mb-6">
-                    Start Pro Trial
+                  <Button className="w-full mb-6" asChild>
+                    <Link href="/generator">Start Pro Trial</Link>
                   </Button>
                   <ul className="space-y-3">
                     <li className="flex items-center">
@@ -296,9 +302,11 @@ export default function HomePage() {
             <p className="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
               Join thousands of users who are creating n8n workflows in seconds, not hours.
             </p>
-            <Button size="lg" variant="secondary" className="text-lg px-8 py-6">
-              Start Creating Workflows
-              <ArrowRight className="ml-2 h-5 w-5" />
+            <Button size="lg" variant="secondary" className="text-lg px-8 py-6" asChild>
+              <Link href="/generator">
+                Start Creating Workflows
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
             </Button>
           </div>
         </section>
