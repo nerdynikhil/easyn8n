@@ -9,19 +9,20 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./dev.db"
 }
 
 // Users table
 model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  name      String?
-  plan      String   @default("free") // free, pro, business, enterprise
-  image     String?
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
+  id            String    @id @default(cuid())
+  email         String    @unique
+  emailVerified DateTime? @map("email_verified")
+  name          String?
+  plan          String    @default("free") // free, pro, business, enterprise
+  image         String?
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime  @updatedAt @map("updated_at")
 
   // Relations
   workflows  Workflow[]
@@ -39,12 +40,12 @@ model Account {
   type              String
   provider          String
   providerAccountId String  @map("provider_account_id")
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
+  refresh_token     String?
+  access_token      String?
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String? @db.Text
+  id_token          String?
   session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -78,7 +79,7 @@ model Workflow {
   userId      String   @map("user_id")
   title       String
   description String
-  n8nJson     Json     @map("n8n_json")
+  n8nJson     String   @map("n8n_json") // Changed from Json to String for SQLite
   isPublic    Boolean  @default(false) @map("is_public")
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
@@ -96,7 +97,7 @@ model Template {
   title       String
   description String
   category    String
-  n8nJson     Json     @map("n8n_json")
+  n8nJson     String   @map("n8n_json") // Changed from Json to String for SQLite
   isPremium   Boolean  @default(false) @map("is_premium")
   isActive    Boolean  @default(true) @map("is_active")
   usageCount  Int      @default(0) @map("usage_count")
@@ -116,7 +117,7 @@ model UsageLog {
   action     String   // generate, export, template_use, etc.
   workflowId String?  @map("workflow_id")
   templateId String?  @map("template_id")
-  metadata   Json?    // Additional data like generation time, etc.
+  metadata   String?  @map("metadata") // Changed from Json to String for SQLite
   timestamp  DateTime @default(now())
 
   // Relations

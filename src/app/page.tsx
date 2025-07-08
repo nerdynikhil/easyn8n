@@ -29,7 +29,7 @@ export default function HomePage() {
           </nav>
           <div className="flex items-center space-x-4">
             <Button variant="ghost" size="sm" asChild>
-              <Link href="/api/auth/signin">Sign In</Link>
+              <Link href="/auth/signin">Sign In</Link>
             </Button>
             <Button size="sm" asChild>
               <Link href="/generator">
