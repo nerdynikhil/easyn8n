@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth/config';
 import { prisma } from '@/lib/database';
-import { generateWorkflowWithOpenAI, validateWorkflow } from '@/lib/ai/openai';
+import { generateWorkflowWithGemini, validateWorkflow } from '@/lib/ai/gemini';
 import { WorkflowGenerationRequest, ApiResponse, PLAN_LIMITS } from '@/types';
 
 export async function POST(request: NextRequest) {
@@ -64,7 +64,7 @@ export async function POST(request: NextRequest) {
 
     try {
       // Generate workflow using AI
-      const workflow = await generateWorkflowWithOpenAI(body);
+      const workflow = await generateWorkflowWithGemini(body);
       
       // Validate the generated workflow
       const isValid = await validateWorkflow(workflow);
