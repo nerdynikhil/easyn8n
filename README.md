@@ -1,235 +1,196 @@
-# EasyN8N - AI-Powered Workflow Generation Platform
+# EasyN8N
 
-## 🚀 Overview
+<div align="center">
+  <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License">
+  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome">
+  <img src="https://img.shields.io/badge/TypeScript-Ready-blue.svg" alt="TypeScript">
+  <img src="https://img.shields.io/badge/Next.js-14-black.svg" alt="Next.js">
+</div>
 
-EasyN8N is a premium AI-powered platform that transforms natural language descriptions into ready-to-use n8n workflows. Built with modern technologies and designed for scalability, it democratizes workflow automation by making n8n accessible to everyone, regardless of technical expertise.
+<div align="center">
+  <h3>🤖 Transform ideas into n8n workflows with AI</h3>
+  <p>The open-source platform that generates professional n8n workflows from natural language descriptions in seconds.</p>
+</div>
 
-## ✨ Features Implemented
+<div align="center">
+  <a href="#quick-start"><strong>Quick Start</strong></a> ·
+  <a href="#features"><strong>Features</strong></a> ·
+  <a href="#demo"><strong>Demo</strong></a> ·
+  <a href="#contributing"><strong>Contributing</strong></a> ·
+  <a href="#community"><strong>Community</strong></a>
+</div>
 
-### 🏗️ Foundation & Architecture
-- ✅ **Next.js 14** with App Router and TypeScript
-- ✅ **Premium UI Design** with Tailwind CSS and shadcn/ui components
-- ✅ **Database Schema** with PostgreSQL and Prisma ORM
-- ✅ **Authentication System** with NextAuth.js (Google, GitHub)
-- ✅ **Professional Branding** with EasyN8N color palette and Inter font
-- ✅ **Responsive Design** optimized for all devices
+<br />
 
-### 🎨 Landing Page
-- ✅ **Hero Section** with compelling value proposition
-- ✅ **Feature Highlights** showcasing AI-powered generation
-- ✅ **Social Proof** with testimonials and ratings
-- ✅ **Pricing Tiers** (Free, Pro, Business)
-- ✅ **Professional Footer** with comprehensive links
-- ✅ **SEO Optimization** with proper metadata
+## Why EasyN8N?
 
-### 🔧 Technical Setup
-- ✅ **Type Safety** with comprehensive TypeScript definitions
-- ✅ **Database Models** for users, workflows, templates, and usage tracking
-- ✅ **Authentication Configuration** ready for OAuth providers
-- ✅ **Component Library** with shadcn/ui integration
-- ✅ **Project Structure** organized for scalability
+Building n8n workflows can be complex and time-consuming. EasyN8N bridges that gap by letting you describe your automation needs in plain English and instantly generating professional, ready-to-use workflows.
 
-## 🛠️ Tech Stack
+**Before EasyN8N:**
+- Hours spent learning n8n node configurations
+- Complex workflow design and debugging
+- Technical barriers for non-developers
 
-### Frontend
-- **Framework**: Next.js 14 with App Router
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS with custom design system
-- **Components**: shadcn/ui + Radix UI primitives
-- **Icons**: Lucide React
-- **Fonts**: Inter (professional typography)
+**With EasyN8N:**
+- Describe your automation in natural language
+- Get a complete n8n workflow in seconds
+- Download and import directly into n8n
 
-### Backend & Database
-- **Database**: PostgreSQL with Prisma ORM
-- **Authentication**: NextAuth.js with OAuth providers
-- **API**: Next.js API routes
-- **State Management**: Zustand (configured for future use)
+## ✨ Features
 
-### Development Tools
-- **Build Tool**: Next.js built-in bundler
-- **Linting**: ESLint with Next.js config
-- **Type Checking**: TypeScript
-- **Package Manager**: npm
+- 🤖 **AI-Powered Generation** - Advanced AI understands your requirements and creates optimized workflows
+- ⚡ **Instant Export** - Download n8n-compatible JSON files ready for import
+- 📚 **Template Library** - Curated collection of workflows for common use cases
+- 🎯 **Smart Categorization** - Automatically detects and optimizes for your workflow type
+- 🔐 **Secure Authentication** - Google and GitHub OAuth integration
+- 📊 **Usage Analytics** - Track your workflow generation and usage patterns
+- 🎨 **Beautiful UI** - Modern, responsive design built with Next.js and Tailwind CSS
 
-## 🚀 Getting Started
+## 🚀 Quick Start
 
-### Prerequisites
-- Node.js 18.17 or later
-- PostgreSQL database
-- npm or yarn package manager
+Get EasyN8N running in under 2 minutes:
 
-### Environment Setup
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/easyn8n.git
+cd easyn8n
 
-1. **Clone and Install**
-   ```bash
-   git clone <repository-url>
-   cd easyn8n
-   npm install
-   ```
+# Install dependencies
+npm install
 
-2. **Environment Variables**
-   Create a `.env` file in the root directory:
-   ```bash
-   # Database
-   DATABASE_URL="postgresql://username:password@localhost:5432/easyn8n?schema=public"
+# Set up environment
+cp .env.example .env.local
+# Add your API keys (see setup guide below)
 
-   # NextAuth.js
-   NEXTAUTH_SECRET="your-secret-key-here"
-   NEXTAUTH_URL="http://localhost:3000"
+# Initialize database
+npm run db:setup
 
-   # OAuth Providers
-   GOOGLE_CLIENT_ID="your-google-client-id"
-   GOOGLE_CLIENT_SECRET="your-google-client-secret"
-   GITHUB_ID="your-github-id"
-   GITHUB_SECRET="your-github-secret"
-
-   # AI Services (for future implementation)
-   OPENAI_API_KEY="your-openai-api-key"
-   ANTHROPIC_API_KEY="your-anthropic-api-key"
-   ```
-
-3. **Database Setup**
-   ```bash
-   # Generate Prisma client
-   npx prisma generate
-
-   # Run database migrations
-   npx prisma migrate dev
-
-   # (Optional) Seed the database
-   npx prisma db seed
-   ```
-
-4. **Start Development Server**
-   ```bash
-   npm run dev
-   ```
-
-   Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## 📁 Project Structure
-
-```
-easyn8n/
-├── src/
-│   ├── app/                 # Next.js App Router pages
-│   │   ├── api/            # API routes
-│   │   ├── auth/           # Authentication pages
-│   │   ├── dashboard/      # User dashboard (planned)
-│   │   ├── generator/      # Workflow generator (planned)
-│   │   ├── templates/      # Template library (planned)
-│   │   ├── layout.tsx      # Root layout
-│   │   ├── page.tsx        # Landing page
-│   │   └── globals.css     # Global styles
-│   ├── components/         # React components
-│   │   ├── auth/          # Authentication components
-│   │   ├── layout/        # Layout components
-│   │   ├── ui/            # shadcn/ui components
-│   │   └── workflow/      # Workflow-specific components
-│   ├── lib/               # Utility libraries
-│   │   ├── auth/          # Authentication configuration
-│   │   ├── database/      # Database connection
-│   │   ├── ai/            # AI service integrations
-│   │   └── utils/         # Helper functions
-│   ├── types/             # TypeScript type definitions
-│   └── hooks/             # Custom React hooks
-├── prisma/                # Database schema and migrations
-├── public/                # Static assets
-└── package.json          # Project dependencies
+# Start development server
+npm run dev
 ```
 
-## 🎯 Current Development Status
+Open [http://localhost:3000](http://localhost:3000) and start generating workflows!
 
-### ✅ Completed (Phase 1)
-- [x] Project foundation and architecture
-- [x] Premium UI design system
-- [x] Database schema and models
-- [x] Authentication system setup
-- [x] Landing page with all sections
-- [x] Responsive design implementation
-- [x] SEO optimization
-- [x] TypeScript configuration
+## 🛠️ Setup Guide
 
-### 🚧 In Progress (Phase 2)
-- [ ] AI workflow generation engine
-- [ ] Workflow visualization component
-- [ ] Template library implementation
-- [ ] User dashboard
-- [ ] Workflow export functionality
+### 1. Environment Variables
 
-### 📋 Planned (Phase 3)
-- [ ] Direct n8n integration
-- [ ] Payment processing with Stripe
-- [ ] Advanced AI capabilities
-- [ ] API endpoints
-- [ ] Usage analytics
-- [ ] Community features
+Create `.env.local` with:
 
-## 🎨 Design System
+```bash
+# Database (SQLite for development)
+DATABASE_URL="file:./dev.db"
 
-### Colors
-- **Primary**: Deep Blue (`#1e3a8a`)
-- **Accent**: Electric Blue (`#3b82f6`)
-- **Neutral**: Gray scale for backgrounds and text
-- **Success**: Green (`#10b981`)
-- **Warning**: Amber (`#f59e0b`)
-- **Error**: Red (`#ef4444`)
+# Authentication
+NEXTAUTH_SECRET="your-secret-key"
+NEXTAUTH_URL="http://localhost:3000"
 
-### Typography
-- **Font Family**: Inter (premium, professional)
-- **Headings**: Bold weights for impact
-- **Body**: Regular and medium weights for readability
+# OAuth (optional for development)
+GOOGLE_CLIENT_ID="your-google-client-id"
+GOOGLE_CLIENT_SECRET="your-google-client-secret"
 
-### Components
-Built with shadcn/ui for consistency and accessibility:
-- Buttons with hover states and loading indicators
-- Cards with subtle shadows and borders
-- Forms with validation styling
-- Navigation with smooth transitions
+# AI Provider
+GEMINI_API_KEY="your-gemini-api-key"
+```
 
-## 🔒 Authentication
+### 2. Get API Keys
 
-The authentication system supports:
-- **Google OAuth**: For quick social login
-- **GitHub OAuth**: For developer-friendly authentication
-- **Session Management**: Secure database sessions
-- **User Profiles**: Extended with plan information
+- **Gemini API**: Get your free API key from [Google AI Studio](https://makersuite.google.com/)
+- **Google OAuth** (optional): Set up at [Google Cloud Console](https://console.cloud.google.com/)
 
-## 📊 Database Schema
+### 3. Database Setup
 
-Key entities:
-- **Users**: Authentication and subscription management
-- **Workflows**: Generated n8n workflows with metadata
-- **Templates**: Curated workflow templates
-- **Usage Logs**: Analytics and usage tracking
+```bash
+# Generate Prisma client and create database
+npm run db:setup
 
-## 🚀 Deployment
+# Start development
+npm run dev
+```
 
-The application is ready for deployment on:
-- **Vercel** (recommended for Next.js)
-- **Netlify**
-- **Railway** or **Render** for full-stack hosting
-- **Custom VPS** with Docker
+## 📖 Documentation
 
-## 📝 Contributing
+- **[Setup Guide](docs/setup.md)** - Detailed installation instructions
+- **[API Reference](docs/api.md)** - API endpoints and usage
+- **[Contributing Guide](docs/contributing.md)** - How to contribute
+- **[Deployment](docs/deployment.md)** - Production deployment guide
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+## 🏗️ Tech Stack
+
+- **Frontend**: Next.js 14, TypeScript, Tailwind CSS
+- **Backend**: Next.js API Routes, Prisma ORM
+- **Database**: SQLite (dev) / PostgreSQL (prod)
+- **Authentication**: NextAuth.js
+- **AI**: Google Gemini API
+- **UI Components**: shadcn/ui
+
+## 🤝 Contributing
+
+We love contributions! EasyN8N is open source and we welcome:
+
+- 🐛 Bug reports and fixes
+- ✨ New features and improvements
+- 📚 Documentation updates
+- 🎨 UI/UX enhancements
+
+### Quick Contribution Steps
+
+1. Fork the repo
+2. Create your feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
 5. Open a Pull Request
 
-## 📄 License
+See our [Contributing Guide](docs/contributing.md) for detailed information.
 
-This project is proprietary and confidential. All rights reserved.
+## 🌟 Community
 
-## 🆘 Support
+Join our growing community of automation enthusiasts:
 
-For support and questions:
-- 📧 Email: support@easyn8n.com
-- 💬 Discord: [Join our community](https://discord.gg/easyn8n)
-- 📖 Documentation: [docs.easyn8n.com](https://docs.easyn8n.com)
+- **Discord**: [Join our server](https://discord.gg/easyn8n) for real-time discussions
+- **GitHub Discussions**: Share ideas and get help
+- **Twitter**: [@EasyN8N](https://twitter.com/easyn8n) for updates
+- **Blog**: [Latest tutorials and tips](https://easyn8n.com/blog)
+
+## 🎯 Roadmap
+
+### 🚀 Current Focus
+- [ ] Advanced AI prompt engineering
+- [ ] Workflow validation and testing
+- [ ] Direct n8n integration
+- [ ] Community template sharing
+
+### 🔮 Future Plans
+- [ ] Multi-language support
+- [ ] Enterprise features
+- [ ] API marketplace
+- [ ] Workflow analytics
+
+## 📊 Project Stats
+
+- ⭐ **Stars**: Help us reach 1,000 stars!
+- 🍴 **Forks**: Join our contributors
+- 🐛 **Issues**: We're responsive to bug reports
+- 💬 **Discussions**: Active community support
+
+## 📝 License
+
+EasyN8N is open source software licensed under the [MIT License](LICENSE).
+
+## 💖 Sponsors
+
+Support EasyN8N development:
+
+- [GitHub Sponsors](https://github.com/sponsors/easyn8n)
+- [Open Collective](https://opencollective.com/easyn8n)
 
 ---
 
-Built with ❤️ using Next.js, TypeScript, and modern web technologies.
+<div align="center">
+  <p>Built with ❤️ by the open source community</p>
+  <p>
+    <a href="https://easyn8n.com">Website</a> ·
+    <a href="https://twitter.com/easyn8n">Twitter</a> ·
+    <a href="https://discord.gg/easyn8n">Discord</a>
+  </p>
+</div>
