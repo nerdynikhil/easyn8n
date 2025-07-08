@@ -1,3 +1,6 @@
+'use client';
+
+import { useSession } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -5,6 +8,8 @@ import { ArrowRight, Bot, Download, Zap, Users, Star, Check } from "lucide-react
 import Link from "next/link";
 
 export default function HomePage() {
+  const { data: session, status } = useSession();
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Header */}
@@ -28,15 +33,42 @@ export default function HomePage() {
             </Link>
           </nav>
           <div className="flex items-center space-x-4">
-            <Button variant="ghost" size="sm" asChild>
-              <Link href="/auth/signin">Sign In</Link>
-            </Button>
-            <Button size="sm" asChild>
-              <Link href="/generator">
-                Get Started
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
+            {status === 'loading' ? (
+              // Show loading state
+              <div className="flex items-center space-x-4">
+                <div className="h-8 w-20 bg-gray-200 rounded animate-pulse"></div>
+                <div className="h-8 w-24 bg-gray-200 rounded animate-pulse"></div>
+              </div>
+            ) : session ? (
+              // Authenticated user
+              <>
+                <Badge variant="secondary">
+                  {session.user?.plan || 'free'} plan
+                </Badge>
+                <Button variant="outline" size="sm" asChild>
+                  <Link href="/dashboard">Dashboard</Link>
+                </Button>
+                <Button size="sm" asChild>
+                  <Link href="/generator">
+                    Create Workflow
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </>
+            ) : (
+              // Unauthenticated user
+              <>
+                <Button variant="ghost" size="sm" asChild>
+                  <Link href="/auth/signin">Sign In</Link>
+                </Button>
+                <Button size="sm" asChild>
+                  <Link href="/generator">
+                    Get Started
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </>
+            )}
           </div>
         </div>
       </header>
